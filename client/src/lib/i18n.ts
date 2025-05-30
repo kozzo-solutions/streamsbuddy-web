@@ -7,35 +7,35 @@ export const translations = {
     
     // Hero Section
     "hero.title": "StreamsBuddy",
-    "hero.subtitle": "L'assistant ultime pour streamers débutants qui vous aide à gérer votre setup et éviter de rater des moments forts à cause d'erreurs techniques.",
+    "hero.subtitle": "Le copilote intelligent des streamers en pleine ascension : il garde ton stream vivant, te protège des galères techniques, et t’aide à ne jamais perdre un moment fort.",
     "hero.cta": "Rejoindre la liste d'attente",
     "hero.learn-more": "En savoir plus",
     
     // Features Section
     "features.title": "Fonctionnalités Essentielles",
-    "features.subtitle": "Tous les outils nécessaires pour éviter les erreurs techniques qui gâchent vos streams",
+    "features.subtitle": "L’essentiel pour garder le contrôle de votre stream, même quand tout s’emballe.",
     "features.mic.title": "Détection Micro",
     "features.mic.description": "Alertes instantanées quand votre micro est coupé pour ne jamais rater un moment important.",
-    "features.fps.title": "Monitoring FPS",
+    "features.fps.title": "Analyse FPS",
     "features.fps.description": "Surveillez les performances de votre stream pour maintenir une qualité optimale.",
     "features.audio.title": "Contrôle Audio",
     "features.audio.description": "Surveillance du niveau sonore pour éviter les problèmes audio pendant le stream.",
     "features.viewers.title": "Suivi Audience",
-    "features.viewers.description": "Gardez un œil sur votre audience et les métriques importantes en temps réel.",
-    "features.game.title": "Gestion Setup",
-    "features.game.description": "Aide à la configuration et optimisation de votre setup streaming pour débutants.",
-    "features.assistant.title": "Assistant Personnel",
-    "features.assistant.description": "Conseils et notifications personnalisés pour améliorer votre expérience streaming.",
+    "features.viewers.description": "Recevez une alerte lorsqu’un nouveau spectateur rejoint votre stream, pour ne jamais manquer une occasion d’interagir.",
+    "features.game.title": "Encore plus à venir",
+    "features.game.description": "La gestion du setup évolue : d'autres outils sont en préparation selon vos retours et priorités.",
+    "features.assistant.title": "Copilote Social",
+    "features.assistant.description": "Stimulez vos lives avec des sujets de discussion, des questions engageantes et des rappels pour rester actif et captiver votre audience.",
     
     // How It Works
     "how-it-works.title": "Comment ça marche ?",
     "how-it-works.subtitle": "Trois étapes simples pour améliorer votre streaming",
     "how-it-works.step1.title": "Liste d'attente",
-    "how-it-works.step1.description": "Inscrivez-vous à notre liste d'attente pour accéder à la version bêta de StreamsBuddy.",
+    "how-it-works.step1.description": "Inscrivez-vous à notre liste d'attente pour accéder à la version bêta de StreamsBuddy lors de sa sortie.",
     "how-it-works.step2.title": "Configuration",
     "how-it-works.step2.description": "Une fois invité, configurez facilement StreamsBuddy avec votre setup streaming.",
     "how-it-works.step3.title": "Streamez sereinement !",
-    "how-it-works.step3.description": "Streamez sans stress avec votre assistant qui surveille votre setup en temps réel.",
+    "how-it-works.step3.description": "Streamez sans stress avec votre assistant qui vous accompagne en temps réel.",
     
     // Registration
     "register.title": "Liste d'attente bêta",
@@ -44,16 +44,16 @@ export const translations = {
     "register.email.placeholder": "votre.email@exemple.com",
     "register.email.error": "Veuillez entrer une adresse e-mail valide",
     "register.twitch.label": "Nom d'utilisateur Twitch",
-    "register.twitch.placeholder": "VotreUsername",
+    "register.twitch.placeholder": "Votre Username",
     "register.twitch.error": "Le nom d'utilisateur Twitch est requis",
     "register.followers.label": "Nombre de followers actuels",
-    "register.followers.select": "Sélectionnez votre gamme",
+    "register.followers.select": "Sélectionnez la taille de votre communauté",
     "register.followers.range1": "0 - 50 followers",
     "register.followers.range2": "51 - 500 followers",
     "register.followers.range3": "501 - 5 000 followers",
     "register.followers.range4": "5 001 - 50 000 followers",
     "register.followers.range5": "50 000+ followers",
-    "register.followers.error": "Veuillez sélectionner une gamme de followers",
+    "register.followers.error": "Veuillez sélectionner votre nombre de followers",
     "register.privacy.label": "J'accepte la",
     "register.privacy.link": "politique de confidentialité",
     "register.privacy.required": "*",
@@ -96,25 +96,25 @@ export const translations = {
     
     // Hero Section
     "hero.title": "StreamsBuddy",
-    "hero.subtitle": "The ultimate assistant for beginner streamers that helps you manage your setup and avoid missing great moments due to technical errors.",
+    "hero.subtitle": "The intelligent copilot for rising streamers: keeps your stream lively, protects you from technical issues, and helps you never miss a highlight.",
     "hero.cta": "Join waitlist",
     "hero.learn-more": "Learn more",
-    
+
     // Features Section
     "features.title": "Essential Features",
-    "features.subtitle": "All the tools you need to avoid technical errors that ruin your streams",
+    "features.subtitle": "Everything you need to keep control of your stream, even when things get hectic.",
     "features.mic.title": "Mic Detection",
     "features.mic.description": "Instant alerts when your mic is muted so you never miss an important moment.",
-    "features.fps.title": "FPS Monitoring",
-    "features.fps.description": "Monitor your stream performance to maintain optimal quality.",
+    "features.fps.title": "FPS Analysis",
+    "features.fps.description": "Monitor your stream’s performance to maintain optimal quality.",
     "features.audio.title": "Audio Control",
     "features.audio.description": "Sound level monitoring to avoid audio issues during your stream.",
     "features.viewers.title": "Audience Tracking",
-    "features.viewers.description": "Keep an eye on your audience and important metrics in real-time.",
-    "features.game.title": "Setup Management",
-    "features.game.description": "Setup configuration and optimization help for streaming beginners.",
-    "features.assistant.title": "Personal Assistant",
-    "features.assistant.description": "Personalized tips and notifications to improve your streaming experience.",
+    "features.viewers.description": "Get an alert when a new viewer joins your stream, so you never miss a chance to interact.",
+    "features.game.title": "More coming soon",
+    "features.game.description": "Setup management is evolving: more tools are in the works based on your feedback and priorities.",
+    "features.assistant.title": "Social Copilot",
+    "features.assistant.description": "Boost your lives with discussion topics, engaging questions, and reminders to stay active and captivate your audience.",
     
     // How It Works
     "how-it-works.title": "How does it work?",
@@ -175,7 +175,7 @@ export const translations = {
     "footer.help": "Help Center",
     "footer.contact": "Contact",
     "footer.privacy": "Privacy",
-    "footer.copyright": "© 2024 StreamsBuddy. All rights reserved."
+    "footer.copyright": "© 2025 Kozzo. All rights reserved."
   }
 };
 

@@ -1,5 +1,6 @@
 import { pgTable, text, serial, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
+import { stream } from "exceljs";
 import { z } from "zod";
 
 export const users = pgTable("users", {
@@ -13,6 +14,8 @@ export const leads = pgTable("leads", {
   email: text("email").notNull(),
   twitchUsername: text("twitch_username").notNull(),
   followersRange: text("followers_range").notNull(),
+  streamingDuration: text("streaming_duration").notNull(),
+  streamingSoftware: text("streaming_software").notNull(),
   language: text("language").notNull().default("fr"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
@@ -21,6 +24,8 @@ export const insertLeadSchema = createInsertSchema(leads).pick({
   email: true,
   twitchUsername: true,
   followersRange: true,
+  streamingDuration: true,
+  streamingSoftware: true,
   language: true,
 }).extend({
   email: z.string().email("Invalid email address"),
@@ -28,6 +33,9 @@ export const insertLeadSchema = createInsertSchema(leads).pick({
   followersRange: z.enum(["0-50", "51-500", "501-5000", "5001-50000", "50000+"], {
     required_error: "Please select a follower range"
   }),
+  streamingDuration: z.string().min(1, "Streaming duration is required"),
+  streamingSoftware: z.enum(["obs", "streamlabs", "autre", "nostream"], {
+    required_error: "Please select a streaming software"}),
   language: z.enum(["fr", "en"]).default("fr"),
 });
 

@@ -2,12 +2,19 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
+import { Controller } from "react-hook-form";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { useI18n } from "@/hooks/use-i18n";
 import { PrivacyModal } from "@/components/ui/privacy-modal";
@@ -20,6 +27,7 @@ export function Registration() {
   const { toast } = useToast();
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [privacyChecked, setPrivacyChecked] = useState(false);
 
   const form = useForm<InsertLead>({
     resolver: zodResolver(insertLeadSchema),
@@ -27,9 +35,20 @@ export function Registration() {
       email: "",
       twitchUsername: "",
       followersRange: undefined as any,
+      streamingDuration: "",
+      streamingSoftware: undefined as any,
       language: language,
     },
   });
+
+  // Vérifie si tous les champs sont remplis
+  const isFormValid =
+    privacyChecked &&
+    form.watch("email") &&
+    form.watch("twitchUsername") &&
+    form.watch("followersRange") &&
+    form.watch("streamingDuration") &&
+    form.watch("streamingSoftware");
 
   const mutation = useMutation({
     mutationFn: async (data: InsertLead) => {
@@ -71,7 +90,7 @@ export function Registration() {
               <p className="text-gray-300 mb-6">
                 Thank you for your interest in StreamBot!
               </p>
-              <Button 
+              <Button
                 onClick={() => setSuccess(false)}
                 className="bg-blue-600 hover:bg-blue-700"
               >
@@ -87,15 +106,7 @@ export function Registration() {
   return (
     <section id="register" className="py-20 bg-gray-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-white bg-clip-text text-transparent">
-            {t("register.title")}
-          </h2>
-          <p className="text-xl text-gray-200">
-            {t("register.subtitle")}
-          </p>
-        </div>
-
+        {/* ...existing code... */}
         <Card className="bg-black border-gray-600">
           <CardContent className="p-8 lg:p-12">
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -109,13 +120,14 @@ export function Registration() {
                     type="email"
                     placeholder={t("register.email.placeholder")}
                     className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
-                    {...form.register("email")}
+                    {...form.register("email", { required: true })}
                   />
                   {form.formState.errors.email && (
-                    <p className="text-red-400 text-sm">{t("register.email.error")}</p>
+                    <p className="text-red-400 text-sm">
+                      {t("register.email.error")}
+                    </p>
                   )}
                 </div>
-
                 <div className="space-y-2">
                   <Label htmlFor="twitchUsername" className="text-gray-300">
                     {t("register.twitch.label")}
@@ -125,41 +137,148 @@ export function Registration() {
                     type="text"
                     placeholder={t("register.twitch.placeholder")}
                     className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
-                    {...form.register("twitchUsername")}
+                    {...form.register("twitchUsername", { required: true })}
                   />
                   {form.formState.errors.twitchUsername && (
-                    <p className="text-red-400 text-sm">{t("register.twitch.error")}</p>
+                    <p className="text-red-400 text-sm">
+                      {t("register.twitch.error")}
+                    </p>
                   )}
                 </div>
               </div>
 
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Nombre de followers */}
+                <div className="space-y-2">
+                  <Label htmlFor="followers" className="text-gray-300">
+                    {t("register.followers.label")}
+                  </Label>
+                  <Select
+                    onValueChange={(value) =>
+                      form.setValue("followersRange", value as any)
+                    }
+                  >
+                    <SelectTrigger className="bg-gray-800 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
+                      <SelectValue
+                        placeholder={t("register.followers.select")}
+                      />
+                    </SelectTrigger>
+                    <SelectContent className="bg-gray-800 border-gray-600">
+                      <SelectItem
+                        value="0-50"
+                        className="text-white hover:bg-gray-700"
+                      >
+                        {t("register.followers.range1")}
+                      </SelectItem>
+                      <SelectItem
+                        value="51-500"
+                        className="text-white hover:bg-gray-700"
+                      >
+                        {t("register.followers.range2")}
+                      </SelectItem>
+                      <SelectItem
+                        value="501-5000"
+                        className="text-white hover:bg-gray-700"
+                      >
+                        {t("register.followers.range3")}
+                      </SelectItem>
+                      <SelectItem
+                        value="5001-50000"
+                        className="text-white hover:bg-gray-700"
+                      >
+                        {t("register.followers.range4")}
+                      </SelectItem>
+                      <SelectItem
+                        value="50000+"
+                        className="text-white hover:bg-gray-700"
+                      >
+                        {t("register.followers.range5")}
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {form.formState.errors.followersRange && (
+                    <p className="text-red-400 text-sm">
+                      {t("register.followers.error")}
+                    </p>
+                  )}
+                </div>
+                {/* Durée de streaming */}
+                <div className="space-y-2">
+                  <Label htmlFor="streamingDuration" className="text-gray-300">
+                    Depuis combien de temps streamez-vous ?
+                  </Label>
+                  <Input
+                    id="streamingDuration"
+                    type="text"
+                    placeholder="Ex: 6 mois, 2 ans, je commence tout juste..."
+                    className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
+                    {...form.register("streamingDuration", { required: true })}
+                  />
+                  {form.formState.errors.streamingDuration && (
+                    <p className="text-red-400 text-sm">Ce champ est requis</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Logiciel de streaming */}
               <div className="space-y-2">
-                <Label htmlFor="followers" className="text-gray-300">
-                  {t("register.followers.label")}
+                <Label htmlFor="streamingSoftware" className="text-gray-300">
+                  Quel logiciel de streaming utilisez-vous ?
                 </Label>
-                <Select onValueChange={(value) => form.setValue("followersRange", value as any)}>
+                <Select
+                  onValueChange={(value) =>
+                    form.setValue("streamingSoftware", value as any)
+                  }
+                >
                   <SelectTrigger className="bg-gray-800 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
-                    <SelectValue placeholder={t("register.followers.select")} />
+                    <SelectValue placeholder="Choisissez une option" />
                   </SelectTrigger>
                   <SelectContent className="bg-gray-800 border-gray-600">
-                    <SelectItem value="0-50" className="text-white hover:bg-gray-700">{t("register.followers.range1")}</SelectItem>
-                    <SelectItem value="51-500" className="text-white hover:bg-gray-700">{t("register.followers.range2")}</SelectItem>
-                    <SelectItem value="501-5000" className="text-white hover:bg-gray-700">{t("register.followers.range3")}</SelectItem>
-                    <SelectItem value="5001-50000" className="text-white hover:bg-gray-700">{t("register.followers.range4")}</SelectItem>
-                    <SelectItem value="50000+" className="text-white hover:bg-gray-700">{t("register.followers.range5")}</SelectItem>
+                    <SelectItem
+                      value="obs"
+                      className="text-white hover:bg-gray-700"
+                    >
+                      OBS
+                    </SelectItem>
+                    <SelectItem
+                      value="streamlabs"
+                      className="text-white hover:bg-gray-700"
+                    >
+                      Streamlabs
+                    </SelectItem>
+                    <SelectItem
+                      value="autre"
+                      className="text-white hover:bg-gray-700"
+                    >
+                      Autre
+                    </SelectItem>
+                    <SelectItem
+                      value="nostream"
+                      className="text-white hover:bg-gray-700"
+                    >
+                      Je ne streame pas encore
+                    </SelectItem>
                   </SelectContent>
                 </Select>
-                {form.formState.errors.followersRange && (
-                  <p className="text-red-400 text-sm">{t("register.followers.error")}</p>
+                {form.formState.errors.streamingSoftware && (
+                  <p className="text-red-400 text-sm">Ce champ est requis</p>
                 )}
               </div>
 
+              {/* Conditions */}
               <div className="flex items-start space-x-3">
                 <Checkbox
                   id="privacy"
+                  checked={privacyChecked}
+                  onCheckedChange={(checked) =>
+                    setPrivacyChecked(checked === true)
+                  }
                   className="mt-1 border-gray-600 data-[state=checked]:bg-blue-600"
                 />
-                <Label htmlFor="privacy" className="text-sm text-gray-300 flex-1">
+                <Label
+                  htmlFor="privacy"
+                  className="text-sm text-gray-300 flex-1"
+                >
                   {t("register.privacy.label")}{" "}
                   <button
                     type="button"
@@ -167,24 +286,28 @@ export function Registration() {
                     className="text-blue-400 hover:text-blue-300 underline"
                   >
                     {t("register.privacy.link")}
-                  </button>
-                  {" "}{t("register.privacy.required")}
+                  </button>{" "}
+                  {t("register.privacy.required")}
                 </Label>
               </div>
 
               <Button
                 type="submit"
-                disabled={mutation.isPending}
+                disabled={mutation.isPending || !isFormValid}
                 className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-800 hover:to-blue-600 px-8 py-4 text-lg font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {mutation.isPending ? t("register.submitting") : t("register.submit")}
+                {mutation.isPending
+                  ? t("register.submitting")
+                  : t("register.submit")}
               </Button>
             </form>
           </CardContent>
         </Card>
       </div>
-
-      <PrivacyModal open={privacyModalOpen} onOpenChange={setPrivacyModalOpen} />
+      <PrivacyModal
+        open={privacyModalOpen}
+        onOpenChange={setPrivacyModalOpen}
+      />
     </section>
   );
 }
