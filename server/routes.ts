@@ -20,6 +20,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
           email: lead.email,
           twitchUsername: lead.twitchUsername,
           followersRange: lead.followersRange,
+          streamingDuration: lead.streamingDuration,
+          streamingSoftware: lead.streamingSoftware,
           language: lead.language,
           createdAt: lead.createdAt
         }
@@ -77,6 +79,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         { header: 'Email', key: 'email', width: 30 },
         { header: 'Twitch Username', key: 'twitchUsername', width: 20 },
         { header: 'Followers Range', key: 'followersRange', width: 15 },
+        { header: 'Streaming Duration', key: 'streamingDuration', width: 20 },
+        { header: 'Streaming Software', key: 'streamingSoftware', width: 20 },
         { header: 'Language', key: 'language', width: 10 },
         { header: 'Created At', key: 'createdAt', width: 20 }
       ];

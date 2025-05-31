@@ -89,15 +89,7 @@ export function Registration() {
               <h2 className="text-3xl font-bold text-white mb-4">
                 {t("register.success")}
               </h2>
-              <p className="text-gray-300 mb-6">
-                Thank you for your interest in StreamBot!
-              </p>
-              <Button
-                onClick={() => setSuccess(false)}
-                className="bg-blue-600 hover:bg-blue-700"
-              >
-                Register Another User
-              </Button>
+              <p className="text-gray-300 mb-6">{t("register.success2")}</p>
             </CardContent>
           </Card>
         </div>

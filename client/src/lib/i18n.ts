@@ -78,6 +78,7 @@ export const translations = {
     "register.submit": "Rejoindre la liste d'attente",
     "register.submitting": "Inscription en cours...",
     "register.success": "Inscription réussie ! Vous êtes maintenant sur la liste d'attente bêta.",
+    "register.success2": "Merci d'avoir rejoint la liste d'attente bêta de StreamsBuddy ! Nous vous tiendrons informé du lancement et des prochaines étapes.",
     
     // Privacy Policy
     "privacy.title": "Politique de Confidentialité",
@@ -176,6 +177,7 @@ export const translations = {
     "register.submit": "Join waitlist",
     "register.submitting": "Submitting...",
     "register.success": "Registration successful! You're now on the beta waitlist.",
+    "register.success2": "Thank you for joining the StreamsBuddy beta waitlist! We will keep you updated on the launch and next steps.",
     
     // Privacy Policy
     "privacy.title": "Privacy Policy",
