@@ -17,7 +17,7 @@ export default function Home() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setMobileMenuOpen(false);
   };
@@ -30,8 +30,8 @@ export default function Home() {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -41,37 +41,41 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
-              <img src={logoKozzo} alt="StreamsBuddy Logo" className="w-10 h-10" />
+              <img
+                src={logoKozzo}
+                alt="StreamsBuddy Logo"
+                className="w-10 h-10"
+              />
               <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-white bg-clip-text text-transparent">
                 StreamsBuddy
               </span>
             </div>
-            
+
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-6">
-              <button 
-                onClick={() => scrollToSection('features')}
+              <button
+                onClick={() => scrollToSection("features")}
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 {t("nav.features")}
               </button>
-              <button 
-                onClick={() => scrollToSection('how-it-works')}
+              <button
+                onClick={() => scrollToSection("how-it-works")}
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 {t("nav.how-it-works")}
               </button>
-              <button 
-                onClick={() => scrollToSection('register')}
+              <button
+                onClick={() => scrollToSection("register")}
                 className="text-gray-300 hover:text-white transition-colors"
               >
                 {t("nav.register")}
               </button>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <LanguageSelector />
-              
+
               {/* Mobile menu button */}
               <Button
                 variant="ghost"
@@ -79,29 +83,33 @@ export default function Home() {
                 className="md:hidden text-gray-300 hover:text-white"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
-                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {mobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </Button>
             </div>
           </div>
-          
+
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
             <div className="md:hidden border-t border-gray-700 py-4">
               <div className="flex flex-col space-y-3">
-                <button 
-                  onClick={() => scrollToSection('features')}
+                <button
+                  onClick={() => scrollToSection("features")}
                   className="text-gray-300 hover:text-white transition-colors text-left px-4 py-2"
                 >
                   {t("nav.features")}
                 </button>
-                <button 
-                  onClick={() => scrollToSection('how-it-works')}
+                <button
+                  onClick={() => scrollToSection("how-it-works")}
                   className="text-gray-300 hover:text-white transition-colors text-left px-4 py-2"
                 >
                   {t("nav.how-it-works")}
                 </button>
-                <button 
-                  onClick={() => scrollToSection('register')}
+                <button
+                  onClick={() => scrollToSection("register")}
                   className="text-gray-300 hover:text-white transition-colors text-left px-4 py-2"
                 >
                   {t("nav.register")}

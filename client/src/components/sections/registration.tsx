@@ -21,6 +21,7 @@ import { PrivacyModal } from "@/components/ui/privacy-modal";
 import { insertLeadSchema, type InsertLead } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
 import { CheckCircle } from "lucide-react";
+import { WhyDataModal } from "@/components/ui/WhyDataModal";
 
 export function Registration() {
   const { t, language } = useI18n();
@@ -28,6 +29,7 @@ export function Registration() {
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
   const [success, setSuccess] = useState(false);
   const [privacyChecked, setPrivacyChecked] = useState(false);
+  const [whyDataModalOpen, setWhyDataModalOpen] = useState(false);
 
   const form = useForm<InsertLead>({
     resolver: zodResolver(insertLeadSchema),
@@ -106,7 +108,17 @@ export function Registration() {
   return (
     <section id="register" className="py-20 bg-gray-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ...existing code... */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-white bg-clip-text text-transparent text-center">
+            {t("register.title")}
+          </h2>
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+            {t("register.subtitle")}
+          </p>
+          <p className="text-base text-gray-400 max-w-2xl mx-auto mt-2">
+            {t("register.subtitle2")}
+          </p>
+        </div>
         <Card className="bg-black border-gray-600">
           <CardContent className="p-8 lg:p-12">
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -205,64 +217,101 @@ export function Registration() {
                 {/* Durée de streaming */}
                 <div className="space-y-2">
                   <Label htmlFor="streamingDuration" className="text-gray-300">
-                    Depuis combien de temps streamez-vous ?
+                    {t("register.streamingDuration.label")}
                   </Label>
                   <Input
                     id="streamingDuration"
                     type="text"
-                    placeholder="Ex: 6 mois, 2 ans, je commence tout juste..."
+                    placeholder={t("register.streamingDuration.placeholder")}
                     className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
                     {...form.register("streamingDuration", { required: true })}
                   />
                   {form.formState.errors.streamingDuration && (
-                    <p className="text-red-400 text-sm">Ce champ est requis</p>
+                    <p className="text-red-400 text-sm">
+                      {t("register.streamingSoftware.error")}
+                    </p>
                   )}
                 </div>
               </div>
 
-              {/* Logiciel de streaming */}
-              <div className="space-y-2">
-                <Label htmlFor="streamingSoftware" className="text-gray-300">
-                  Quel logiciel de streaming utilisez-vous ?
-                </Label>
-                <Select
-                  onValueChange={(value) =>
-                    form.setValue("streamingSoftware", value as any)
-                  }
-                >
-                  <SelectTrigger className="bg-gray-800 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
-                    <SelectValue placeholder="Choisissez une option" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-600">
-                    <SelectItem
-                      value="obs"
-                      className="text-white hover:bg-gray-700"
-                    >
-                      OBS
-                    </SelectItem>
-                    <SelectItem
-                      value="streamlabs"
-                      className="text-white hover:bg-gray-700"
-                    >
-                      Streamlabs
-                    </SelectItem>
-                    <SelectItem
-                      value="autre"
-                      className="text-white hover:bg-gray-700"
-                    >
-                      Autre
-                    </SelectItem>
-                    <SelectItem
-                      value="nostream"
-                      className="text-white hover:bg-gray-700"
-                    >
-                      Je ne streame pas encore
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-                {form.formState.errors.streamingSoftware && (
-                  <p className="text-red-400 text-sm">Ce champ est requis</p>
-                )}
+              {/* Streaming Platform & Language */}
+              <div className="flex flex-col md:flex-row gap-6">
+                {/* Streaming Platform */}
+                <div className="flex-1 space-y-2">
+                  <Label htmlFor="streamingSoftware" className="text-gray-300">
+                    {t("register.streamingSoftware.label")}
+                  </Label>
+                  <Select
+                    onValueChange={(value) =>
+                      form.setValue("streamingSoftware", value as any)
+                    }
+                  >
+                    <SelectTrigger className="bg-gray-800 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
+                      <SelectValue placeholder="Choisissez une option" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-gray-800 border-gray-600">
+                      <SelectItem
+                        value="obs"
+                        className="text-white hover:bg-gray-700"
+                      >
+                        OBS
+                      </SelectItem>
+                      <SelectItem
+                        value="streamlabs"
+                        className="text-white hover:bg-gray-700"
+                      >
+                        Streamlabs
+                      </SelectItem>
+                      <SelectItem
+                        value="autre"
+                        className="text-white hover:bg-gray-700"
+                      >
+                        {t("register.streamingSoftware.autre")}
+                      </SelectItem>
+                      <SelectItem
+                        value="nostream"
+                        className="text-white hover:bg-gray-700"
+                      >
+                        {t("register.streamingSoftware.nostream")}
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {form.formState.errors.streamingSoftware && (
+                    <p className="text-red-400 text-sm">
+                      {t("register.streamingDuration.error")}
+                    </p>
+                  )}
+                </div>
+                {/* Language Select */}
+                <div className="flex-1 space-y-2">
+                  <Label htmlFor="userLanguage" className="text-gray-300">
+                    {t("register.language.label")}
+                  </Label>
+                  <Select
+                    onValueChange={(value) =>
+                      form.setValue("language", value as any)
+                    }
+                    defaultValue={form.watch("language") || language}
+                  >
+                    <SelectTrigger className="bg-gray-800 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
+                      <SelectValue placeholder="Choisissez une langue" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-gray-800 border-gray-600">
+                      <SelectItem
+                        value="fr"
+                        className="text-white hover:bg-gray-700"
+                      >
+                        {t("register.language.fr")}
+                      </SelectItem>
+                      <SelectItem
+                        value="en"
+                        className="text-white hover:bg-gray-700"
+                      >
+                        {t("register.language.en")}
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
 
               {/* Conditions */}
@@ -290,7 +339,21 @@ export function Registration() {
                   {t("register.privacy.required")}
                 </Label>
               </div>
-
+              {/* Why we collect data */}
+              <div className="mt-2">
+                <button
+                  type="button"
+                  onClick={() => setWhyDataModalOpen(true)}
+                  className="text-blue-400 hover:text-blue-300 underline text-sm"
+                >
+                  {t("register.whydata.button")}
+                </button>
+              </div>
+              <WhyDataModal
+                open={whyDataModalOpen}
+                onOpenChange={setWhyDataModalOpen}
+                text={t("register.whydata.content")}
+              />
               <Button
                 type="submit"
                 disabled={mutation.isPending || !isFormValid}

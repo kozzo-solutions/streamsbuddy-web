@@ -8,20 +8,20 @@ export function HowItWorks() {
       number: "1",
       title: t("how-it-works.step1.title"),
       description: t("how-it-works.step1.description"),
-      gradient: "from-blue-500 to-purple-500"
+      gradient: "from-blue-500 to-purple-500",
     },
     {
       number: "2",
       title: t("how-it-works.step2.title"),
       description: t("how-it-works.step2.description"),
-      gradient: "from-purple-500 to-cyan-500"
+      gradient: "from-purple-500 to-cyan-500",
     },
     {
       number: "3",
       title: t("how-it-works.step3.title"),
       description: t("how-it-works.step3.description"),
-      gradient: "from-cyan-500 to-teal-500"
-    }
+      gradient: "from-cyan-500 to-teal-500",
+    },
   ];
 
   return (
@@ -39,10 +39,14 @@ export function HowItWorks() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step, index) => (
             <div key={index} className="text-center">
-              <div className={`w-20 h-20 bg-gradient-to-r ${step.gradient} rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 text-white`}>
+              <div
+                className={`w-20 h-20 bg-gradient-to-r ${step.gradient} rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 text-white`}
+              >
                 {step.number}
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">{step.title}</h3>
+              <h3 className="text-xl font-bold mb-4 text-white">
+                {step.title}
+              </h3>
               <p className="text-gray-300">{step.description}</p>
             </div>
           ))}

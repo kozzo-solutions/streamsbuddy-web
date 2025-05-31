@@ -25,58 +25,48 @@ export function PrivacyModal({ open, onOpenChange }: PrivacyModalProps) {
             {t("privacy.title")}
           </DialogTitle>
         </DialogHeader>
-        
+
         <ScrollArea className="max-h-[60vh] pr-4">
           <div className="space-y-6 text-gray-300">
             <div>
               <h4 className="text-lg font-semibold text-white mb-3">
                 {t("privacy.section1.title")}
               </h4>
-              <p className="mb-4">
-                {t("privacy.section1.content")}
-              </p>
+              <p className="mb-4">{t("privacy.section1.content")}</p>
             </div>
 
             <div>
               <h4 className="text-lg font-semibold text-white mb-3">
                 {t("privacy.section2.title")}
               </h4>
-              <p className="mb-4">
-                {t("privacy.section2.content")}
-              </p>
+              <p className="mb-4">{t("privacy.section2.content")}</p>
             </div>
 
             <div>
               <h4 className="text-lg font-semibold text-white mb-3">
                 {t("privacy.section3.title")}
               </h4>
-              <p className="mb-4">
-                {t("privacy.section3.content")}
-              </p>
+              <p className="mb-4">{t("privacy.section3.content")}</p>
             </div>
 
             <div>
               <h4 className="text-lg font-semibold text-white mb-3">
                 {t("privacy.section4.title")}
               </h4>
-              <p className="mb-4">
-                {t("privacy.section4.content")}
-              </p>
+              <p className="mb-4">{t("privacy.section4.content")}</p>
             </div>
 
             <div>
               <h4 className="text-lg font-semibold text-white mb-3">
                 {t("privacy.section5.title")}
               </h4>
-              <p>
-                {t("privacy.section5.content")}
-              </p>
+              <p>{t("privacy.section5.content")}</p>
             </div>
           </div>
         </ScrollArea>
-        
+
         <div className="flex justify-end pt-4 border-t border-gray-700">
-          <Button 
+          <Button
             onClick={() => onOpenChange(false)}
             className="bg-blue-600 hover:bg-blue-700"
           >
