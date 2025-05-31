@@ -257,7 +257,9 @@ export function Registration() {
                     }
                   >
                     <SelectTrigger className="bg-gray-800 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
-                      <SelectValue placeholder="Choisissez une option" />
+                      <SelectValue
+                        placeholder={t("register.streamingSoftware.option")}
+                      />
                     </SelectTrigger>
                     <SelectContent className="bg-gray-800 border-gray-600">
                       <SelectItem
@@ -304,7 +306,9 @@ export function Registration() {
                     defaultValue={form.watch("language") || language}
                   >
                     <SelectTrigger className="bg-gray-800 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
-                      <SelectValue placeholder="Choisissez une langue" />
+                      <SelectValue
+                        placeholder={t("register.language.select")}
+                      />
                     </SelectTrigger>
                     <SelectContent className="bg-gray-800 border-gray-600">
                       <SelectItem
