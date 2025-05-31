@@ -78,10 +78,6 @@ export function Registration() {
     onSuccess: () => {
       setSuccess(true);
       form.reset();
-      toast({
-        title: "Success!",
-        description: t("register.success"),
-      });
     },
     onError: (error: any) => {
       console.error("Registration error:", error);
