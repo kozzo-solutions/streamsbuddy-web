@@ -1,12 +1,12 @@
-import { Button } from "src/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "src/components/ui/dialog";
-import { ScrollArea } from "src/components/ui/scroll-area";
-import { useI18n } from "src/hooks/use-i18n";
+} from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { useI18n } from "@/hooks/use-i18n";
 
 interface PrivacyModalProps {
   open: boolean;

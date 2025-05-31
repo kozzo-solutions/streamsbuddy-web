@@ -4,8 +4,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "src/components/ui/select";
-import { useI18n } from "src/hooks/use-i18n";
+} from "@/components/ui/select";
+import { useI18n } from "@/hooks/use-i18n";
 
 export function LanguageSelector() {
   const { language, changeLanguage } = useI18n();

@@ -1,5 +1,5 @@
-import logoKozzo from "@assets/logokozzo.png";
-import { useI18n } from "src/hooks/use-i18n";
+import { useI18n } from "@/hooks/use-i18n";
+import logoKozzo from "../../assets/logokozzo.png";
 
 export function Footer() {
   const { t } = useI18n();

@@ -1,5 +1,5 @@
+import { translations, type Language, type TranslationKey } from "@/lib/i18n";
 import { useCallback, useState } from "react";
-import { translations, type Language, type TranslationKey } from "src/lib/i18n";
 
 export function useI18n() {
   const [language, setLanguage] = useState<Language>(() => {

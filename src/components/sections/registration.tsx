@@ -1,24 +1,24 @@
-import { WhyDataModal } from "@/components/ui/whyDataModal";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
-import { CheckCircle } from "lucide-react";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { Button } from "src/components/ui/button";
-import { Card, CardContent } from "src/components/ui/card";
-import { Checkbox } from "src/components/ui/checkbox";
-import { Input } from "src/components/ui/input";
-import { Label } from "src/components/ui/label";
-import { PrivacyModal } from "src/components/ui/privacy-modal";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { PrivacyModal } from "@/components/ui/privacy-modal";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "src/components/ui/select";
-import { useI18n } from "src/hooks/use-i18n";
-import { useToast } from "src/hooks/use-toast";
+} from "@/components/ui/select";
+import { WhyDataModal } from "@/components/ui/whyDataModal";
+import { useI18n } from "@/hooks/use-i18n";
+import { useToast } from "@/hooks/use-toast";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { CheckCircle } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { InsertLead, insertLeadSchema } from "../../schemas/insert-lead";
 
 export function Registration() {

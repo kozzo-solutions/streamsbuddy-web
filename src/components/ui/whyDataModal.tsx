@@ -4,8 +4,8 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "src/components/ui/dialog";
-import { useI18n } from "src/hooks/use-i18n";
+} from "@/components/ui/dialog";
+import { useI18n } from "@/hooks/use-i18n";
 
 export function WhyDataModal({
   open,

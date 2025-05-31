@@ -1,6 +1,6 @@
-import logoKozzo from "@assets/logokozzo.png";
-import { Button } from "src/components/ui/button";
-import { useI18n } from "src/hooks/use-i18n";
+import { Button } from "@/components/ui/button";
+import { useI18n } from "@/hooks/use-i18n";
+import logoKozzo from "../../assets/logokozzo.png";
 
 interface HeroProps {
   onNavigate: (section: string) => void;

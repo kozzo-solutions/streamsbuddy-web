@@ -1,14 +1,14 @@
-import logoKozzo from "@assets/logokozzo.png";
+import { Features } from "@/components/sections/features";
+import { Footer } from "@/components/sections/footer";
+import { Hero } from "@/components/sections/hero";
+import { HowItWorks } from "@/components/sections/how-it-works";
+import { Registration } from "@/components/sections/registration";
+import { Button } from "@/components/ui/button";
+import { LanguageSelector } from "@/components/ui/language-selector";
+import { useI18n } from "@/hooks/use-i18n";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Features } from "src/components/sections/features";
-import { Footer } from "src/components/sections/footer";
-import { Hero } from "src/components/sections/hero";
-import { HowItWorks } from "src/components/sections/how-it-works";
-import { Registration } from "src/components/sections/registration";
-import { Button } from "src/components/ui/button";
-import { LanguageSelector } from "src/components/ui/language-selector";
-import { useI18n } from "src/hooks/use-i18n";
+import logoKozzo from "../assets/logokozzo.png";
 
 export default function Home() {
   const { t } = useI18n();

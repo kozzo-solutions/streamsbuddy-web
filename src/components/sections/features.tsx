@@ -1,6 +1,6 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { useI18n } from "@/hooks/use-i18n";
 import { Brain, Gamepad2, Gauge, MicOff, Users, Volume2 } from "lucide-react";
-import { Card, CardContent } from "src/components/ui/card";
-import { useI18n } from "src/hooks/use-i18n";
 
 export function Features() {
   const { t } = useI18n();
