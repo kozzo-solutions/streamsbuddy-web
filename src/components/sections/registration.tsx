@@ -63,7 +63,7 @@ export function Registration() {
           },
         ],
       };
-      const response = await fetch("https://sheetdb.io/api/v1/uezgixdykpb1t", {
+      const response = await fetch("https://sheetdb.io/api/v1/u988kmt8kwt25", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -234,7 +234,7 @@ export function Registration() {
                   />
                   {form.formState.errors.streamingDuration && (
                     <p className="text-red-400 text-sm">
-                      {t("register.streamingSoftware.error")}
+                      {t("register.streamingDuration.error")}
                     </p>
                   )}
                 </div>
