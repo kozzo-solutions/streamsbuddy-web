@@ -56,9 +56,9 @@ export function Registration() {
           {
             email: data.email,
             twitchUsername: data.twitchUsername,
-            followerCount: data.followersRange,
-            streamingSince: data.streamingDuration,
-            software: data.streamingSoftware,
+            followersRange: data.followersRange,
+            streamingDuration: data.streamingDuration,
+            streamingSoftware: data.streamingSoftware,
             language: data.language,
           },
         ],
@@ -172,9 +172,10 @@ export function Registration() {
                     {t("register.followers.label")}
                   </Label>
                   <Select
-                    onValueChange={(value) =>
-                      form.setValue("followersRange", value as any)
-                    }
+                    onValueChange={(value) => {
+                      form.setValue("followersRange", value as any);
+                      form.trigger("followersRange");
+                    }}
                   >
                     <SelectTrigger className="bg-gray-800 border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
                       <SelectValue
@@ -183,31 +184,31 @@ export function Registration() {
                     </SelectTrigger>
                     <SelectContent className="bg-gray-800 border-gray-600">
                       <SelectItem
-                        value="0-50"
+                        value="0-5"
                         className="text-white hover:bg-gray-700"
                       >
                         {t("register.followers.range1")}
                       </SelectItem>
                       <SelectItem
-                        value="51-500"
+                        value="6-20"
                         className="text-white hover:bg-gray-700"
                       >
                         {t("register.followers.range2")}
                       </SelectItem>
                       <SelectItem
-                        value="501-5000"
+                        value="21-50"
                         className="text-white hover:bg-gray-700"
                       >
                         {t("register.followers.range3")}
                       </SelectItem>
                       <SelectItem
-                        value="5001-50000"
+                        value="51-100"
                         className="text-white hover:bg-gray-700"
                       >
                         {t("register.followers.range4")}
                       </SelectItem>
                       <SelectItem
-                        value="50000+"
+                        value="100+"
                         className="text-white hover:bg-gray-700"
                       >
                         {t("register.followers.range5")}

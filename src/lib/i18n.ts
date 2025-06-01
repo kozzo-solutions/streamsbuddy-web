@@ -62,7 +62,7 @@ export const translations = {
     "register.twitch.placeholder": "cool_gamer",
     "register.twitch.error": "Le nom d'utilisateur Twitch est requis",
     "register.followers.label": "Nombre de viewers moyens actuels",
-    "register.followers.select": "Sélectionnez votre nombre de viewers moyens",
+    "register.followers.select": "Sélectionnez votre intervalle",
     "register.followers.range1": "0 - 5 viewers",
     "register.followers.range2": "6 - 20 viewers",
     "register.followers.range3": "21 - 50 viewers",
